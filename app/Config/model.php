@@ -18,8 +18,9 @@ abstract class Model
         $user = getenv('USER');
         $pass = getenv('PASSWORD');
         $dbname = getenv('DBNAME');
+        $charset =  'charset=UTF8';
 
-        $dsn = "mysql:host={$host};dbname={$dbname};port={$port}";
+        $dsn = "mysql:host={$host};dbname={$dbname};$charset;port={$port}";
         try {
             $this->pdo = new \PDO($dsn, $user, $pass);
             $this->pdo->setAttribute(

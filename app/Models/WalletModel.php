@@ -45,11 +45,11 @@ class WalletModel extends Model
 
     public function getAllWallets(string $user_id): array
     {
-        $statement = $this->pdo
+        $sql = $this->pdo
             ->prepare('SELECT type, date, value, status,description FROM wallets WHERE usuarios_id = :usuarios_id;');
-        $statement->bindParam('usuarios_id', $user_id);
-        $statement->execute();
-        $wallet = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            $sql->bindParam('usuarios_id', $user_id);
+            $sql->execute();
+            $wallet = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
         return $wallet;
     }
